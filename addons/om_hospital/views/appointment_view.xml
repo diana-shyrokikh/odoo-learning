@@ -86,6 +86,13 @@
                             class="oe_highlight"
                             data-hotkey="k"
                     />
+<!--                    <button name="%(om_hospital.action_cancel_appointment)d"-->
+<!--                            string="Cancel"-->
+<!--                            type="action"-->
+<!--                            context="{'default_appointment_id': active_id}"-->
+<!--                            states="draft,in_consultation"-->
+<!--                    />-->
+
                     <button
                             name="action_canceled"
                             string="Canceled"
