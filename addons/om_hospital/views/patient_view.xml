@@ -118,6 +118,7 @@
                             <field name="gender"
                                    invisible="context.get('hide_gender')"
                             />
+                            <field name="appointment_count" />
                         </group>
                         <group>
                             <field name="ref"/>

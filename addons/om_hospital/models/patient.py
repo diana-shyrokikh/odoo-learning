@@ -56,7 +56,23 @@ class HospitalPatient(models.Model):
         "patient.tag",
         string="Tags"
     )
-    appointment_count = fields.Integer(string="Appointment Count")
+    appointment_count = fields.Integer(
+        string="Appointment Count",
+        compute="_compute_appointment_count",
+        store=True
+    )
+    appointment_ids = fields.One2many(
+        "hospital.patient",
+        "patient_id",
+        string="Appointments"
+    )
+
+    @api.depends("appointment_ids")
+    def _compute_appointment_count(self):
+        for patient in self:
+            patient.appointment_count = self.env["hospital.appointment"].search_count([(
+                "patient_id", "=", patient.id
+            )])
 
     @api.constrains("date_of_birth")
     def _check_date_of_birth(self):
