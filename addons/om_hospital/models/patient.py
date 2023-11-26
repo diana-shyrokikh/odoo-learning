@@ -93,3 +93,7 @@ class HospitalPatient(models.Model):
             (patient.id, f"{patient.ref} {patient.name}")
             for patient in self
         ]
+    #
+    # @api.model
+    # def print_report(self, *args, **kwargs):
+    #     return self.env.ref('om_hospital.action_report_custom_template').report_action(self)

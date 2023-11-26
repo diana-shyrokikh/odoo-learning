@@ -97,6 +97,14 @@
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
             <form>
+<!--                <header>-->
+<!--                    <button-->
+<!--                            name="print_report"-->
+<!--                            string="Print"-->
+<!--                            type="object"-->
+<!--                            class="oe_highlight"-->
+<!--                    />-->
+<!--                </header>-->
                 <sheet>
                     <field name="image"
                            widget="image"
@@ -107,7 +115,9 @@
                             <field name="name"/>
                             <field name="date_of_birth"/>
                             <field name="age"/>
-                            <field name="gender"/>
+                            <field name="gender"
+                                   invisible="context.get('hide_gender')"
+                            />
                         </group>
                         <group>
                             <field name="ref"/>
@@ -160,5 +170,43 @@
               parent="menu_patient_master"
               sequence="0"
     />
+
+
+
+
+<!--    <record id="action_report_custom_template" model="ir.actions.report">-->
+<!--            <field name="name">Custom Report</field>-->
+<!--            <field name="model">hospital.patient</field>-->
+<!--            <field name="report_type">qweb-pdf</field>-->
+<!--            <field name="report_name">om_hospital.report_custom_template</field>-->
+<!--            <field name="print_report_name">Custom Report</field>-->
+<!--        </record>-->
+
+<!--        &lt;!&ndash; Template for the report &ndash;&gt;-->
+<!--        <template id="om_hospital.report_custom_template">-->
+<!--            <t t-call="web.html_container">-->
+<!--                    <t t-call="web.external_layout">-->
+
+<!--                        <div class="page">-->
+<!--                        <style type="text/css">-->
+<!--                            @media print {-->
+<!--                                .no-print {-->
+<!--                                     display: none !important;-->
+<!--                                 }-->
+<!--                            }-->
+<!--                        </style>-->
+<!--                            <h2 class="no-print">Custom Report</h2>-->
+<!--                            <p>Name:</p>-->
+<!--                            <p>Description:</p>-->
+<!--                        </div>-->
+<!--                    </t>-->
+<!--            </t>-->
+<!--        </template>-->
+
+<!--    <menuitem id="menu_custom_report"-->
+<!--              name="Custom Report"-->
+<!--            action="action_report_custom_template"-->
+<!--              parent="menu_patient_master"-->
+<!--            sequence="1"/>-->
 
 </odoo>

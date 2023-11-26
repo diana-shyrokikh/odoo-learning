@@ -86,20 +86,23 @@
                             class="oe_highlight"
                             data-hotkey="k"
                     />
-<!--                    <button name="%(om_hospital.action_cancel_appointment)d"-->
-<!--                            string="Cancel"-->
-<!--                            type="action"-->
-<!--                            context="{'default_appointment_id': active_id}"-->
-<!--                            states="draft,in_consultation"-->
-<!--                    />-->
-
-                    <button
-                            name="action_canceled"
-                            string="Canceled"
-                            type="object"
-                            states="in_consultation,draft"
-                            data-hotkey="l"
+                    <button name="%(om_hospital.action_cancel_appointment)d"
+                            string="Cancel"
+                            type="action"
+                            context="{
+                            'default_appointment_id': active_id,
+                            'hide_appointment':  1
+                            }"
+                            states="draft,in_consultation"
                     />
+
+<!--                    <button-->
+<!--                            name="action_canceled"-->
+<!--                            string="Canceled"-->
+<!--                            type="object"-->
+<!--                            states="in_consultation,draft"-->
+<!--                            data-hotkey="l"-->
+<!--                    />-->
 
                     <field name="state"
                            widget="statusbar"
