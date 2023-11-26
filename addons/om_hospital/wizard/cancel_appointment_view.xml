@@ -12,6 +12,10 @@
                     <group>
                         <field name="appointment_id"
                                invisible="context.get('hide_appointment')"
+                                domain="[
+                                    ('state', '=', 'draft'),
+                                   ('priority', 'in', ('0', '1', False))
+                                ]"
                         />
                         <field name="reason"/>
                     </group>

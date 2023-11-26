@@ -16,7 +16,12 @@ class CancelAppointmentWizard(models.TransientModel):
 
     appointment_id = fields.Many2one(
         "hospital.appointment",
-        string="Appointment"
+        string="Appointment",
+        # domain=[
+        #     # "|",  or operator
+        #     ("state", "=", "draft"),
+        #     ("priority", "in", ("0", "1", False))
+        # ]
     )
     reason = fields.Text(
         string="Reason",
