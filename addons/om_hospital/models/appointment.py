@@ -27,7 +27,8 @@ class HospitalAppointment(models.Model):
 
     patient_id = fields.Many2one(
         comodel_name="hospital.patient",
-        string="Patient"
+        string="Patient",
+        ondelete="restrict"  # if any refers it's prohibited
     )
     appointment_time = fields.Datetime(
         string="Appointment time",
