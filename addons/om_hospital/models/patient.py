@@ -1,7 +1,8 @@
 from datetime import date
 import logging
 
-from odoo import api, fields, models
+from odoo import api, fields, models, _
+from odoo.exceptions import ValidationError
 
 
 # Configure the logging module
@@ -57,6 +58,18 @@ class HospitalPatient(models.Model):
     )
     appointment_count = fields.Integer(string="Appointment Count")
 
+    @api.constrains("date_of_birth")
+    def _check_date_of_birth(self):
+        for patient in self:
+            if (
+                    patient.date_of_birth
+                    and
+                    patient.date_of_birth > fields.Date.today()
+            ):
+                raise ValidationError(_(
+                    "The entered date of birth is not acceptable!"
+                ))
+
     @api.depends('date_of_birth')
     def _compute_age(self):
         for patient in self:
@@ -93,6 +106,7 @@ class HospitalPatient(models.Model):
             (patient.id, f"{patient.ref} {patient.name}")
             for patient in self
         ]
+
     #
     # @api.model
     # def print_report(self, *args, **kwargs):
