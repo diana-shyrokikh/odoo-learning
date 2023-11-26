@@ -12,6 +12,7 @@ class PatientTag(models.Model):
     active = fields.Boolean(
         string="Active",
         default=True,
+        copy=False
     )
     color = fields.Integer(string="Color")
     color_2 = fields.Char(string="Color 2")
@@ -29,3 +30,15 @@ class PatientTag(models.Model):
             "Sequence should be non zero positive number!"
         )
     ]
+
+    @api.returns("self", lambda value: value.id)
+    def copy(self, default=None):
+        if default is None:
+            default = {}
+
+        if not default.get("name"):
+            default["name"] = f"{self.name} (Copy)"
+
+        default["sequence"] = 10
+        
+        return super().copy(default)
