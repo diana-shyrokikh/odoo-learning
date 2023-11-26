@@ -1,4 +1,6 @@
-from odoo import api, fields, models
+from odoo import api, fields, models, _
+from odoo.exceptions import ValidationError
+
 
 
 class HospitalAppointment(models.Model):
@@ -71,6 +73,15 @@ class HospitalAppointment(models.Model):
         string="Pharmacy Lines"
     )
     hide_sales_price = fields.Boolean(string="Hide Sales Price")
+
+    def unlink(self):
+        for appointment in self:
+            if appointment.state != "draft":
+                raise ValidationError(_(
+                    "You can delete appointment only with 'Draft' status!"
+                ))
+
+        return super().unlink()
 
     @api.onchange("patient_id")
     def onchange_patient_id(self):
