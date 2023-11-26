@@ -62,7 +62,7 @@ class HospitalPatient(models.Model):
         store=True
     )
     appointment_ids = fields.One2many(
-        "hospital.patient",
+        "hospital.appointment",
         "patient_id",
         string="Appointments"
     )
