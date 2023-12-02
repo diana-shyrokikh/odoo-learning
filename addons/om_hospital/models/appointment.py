@@ -108,7 +108,8 @@ class HospitalAppointment(models.Model):
 
     def action_done(self):
         for appointment in self:
-            appointment.state = "done"
+            if appointment.state == "in_consultation":
+                appointment.state = "done"
 
     def action_canceled(self):
         action = self.env.ref(
