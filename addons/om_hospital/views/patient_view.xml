@@ -137,8 +137,8 @@
                     >
                         <group>
                             <field name="parent" attrs="{'invisible': [('age', '>', 18), ('gender', '=', 'male')]}"/>
-                            <field name="marital_status" attrs="{'invisible': [('age', '&lt;', 18)]}"/>
-                            <field name="partner_name" attrs="{'invisible': [('marital_status', '=', 'single')]}"/>
+                            <field name="marital_status" attrs="{'invisible': [('age', '&lt;=', 18)]}"/>
+                            <field name="partner_name" attrs="{'readonly': [('marital_status', '!=', 'married')]}"/>
                         </group>
                     </group>
                 </sheet>
