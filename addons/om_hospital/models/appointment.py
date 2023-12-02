@@ -103,7 +103,8 @@ class HospitalAppointment(models.Model):
 
     def action_in_consultation(self):
         for appointment in self:
-            appointment.state = "in_consultation"
+            if appointment.state == "draft":
+                appointment.state = "in_consultation"
 
     def action_done(self):
         for appointment in self:

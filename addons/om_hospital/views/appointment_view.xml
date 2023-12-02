@@ -28,6 +28,14 @@
                   sample="1"
                   multi_edit="1"
             >
+                <header>
+                    <button name="action_in_consultation"
+                            string="In Consultation"
+                            class="oe_highlight"
+                            type="object"
+                    />
+                </header>
+
                 <field name="patient_id"
                        string="Patient"
                 />
