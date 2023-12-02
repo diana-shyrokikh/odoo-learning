@@ -75,7 +75,19 @@
                         }"
                         class="fa fa-times btn-danger"
                         attrs="{'invisible': [('state' , 'not in', ('in_consultation', 'draft'))]}"
+                />
+<!--                only many2one relation-->
+                <groupby name="patient_id">
+                    <button name="action_test"
+                            string="Click Me"
+                            type="object"
+                            class="oe_highlight"
                     />
+                    <button name="edit"
+                            string="Edit"
+                            type="edit"
+                    />
+                </groupby>
 
             </tree>
         </field>

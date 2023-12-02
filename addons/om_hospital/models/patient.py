@@ -143,6 +143,10 @@ class HospitalPatient(models.Model):
                     "You cannot delete a patient with appointments!"
                 ))
 
+    def action_test(self):
+        print("Clicked")
+        return
+
     #
     # @api.model
     # def print_report(self, *args, **kwargs):
