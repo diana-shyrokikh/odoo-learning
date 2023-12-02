@@ -135,6 +135,14 @@ class HospitalPatient(models.Model):
             for patient in self
         ]
 
+    @api.ondelete(at_uninstall=False)
+    def _check_appointments(self):
+        for patient in self:
+            if patient.appointment_ids:
+                raise ValidationError(_(
+                    "You cannot delete a patient with appointments!"
+                ))
+
     #
     # @api.model
     # def print_report(self, *args, **kwargs):
