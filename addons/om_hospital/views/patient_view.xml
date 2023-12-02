@@ -110,9 +110,16 @@
                            widget="image"
                            class="oe_avatar"
                     />
+                     <div class="oe_title">
+                         <h4>
+                             <field name="ref" readonly="1"/>
+                         </h4>
+                         <h2>
+                             <field name="name"/>
+                         </h2>
+                     </div>
                     <group>
                         <group>
-                            <field name="name"/>
                             <field name="date_of_birth"/>
                             <field name="age"/>
                             <field name="gender"
@@ -121,7 +128,6 @@
                             <field name="appointment_count" />
                         </group>
                         <group>
-                            <field name="ref"/>
                             <field name="active" invisible="1"/>
                             <field name="appointment_id"/>
                             <field name="tag_ids"
@@ -138,7 +144,13 @@
                         <group>
                             <field name="parent" attrs="{'invisible': [('age', '>', 18), ('gender', '=', 'male')]}"/>
                             <field name="marital_status" attrs="{'invisible': [('age', '&lt;=', 18)]}"/>
-                            <field name="partner_name" attrs="{'readonly': [('marital_status', '!=', 'married')]}"/>
+                            <field name="partner_name"
+                                   attrs="{
+                                    'readonly': [('marital_status', '!=', 'married')],
+                                    'required': [('marital_status', '=', 'married')],
+                                    'invisible': [('age', '>', 18)]
+                                }"
+                            />
                         </group>
                     </group>
                 </sheet>
