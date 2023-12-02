@@ -147,6 +147,12 @@ class HospitalPatient(models.Model):
         print("Clicked")
         return
 
+    def action_done(self):
+        for patient in self:
+            for appointment in patient.appointment_ids:
+                if appointment.state == "in_consultation":
+                    appointment.state = "done"
+
     #
     # @api.model
     # def print_report(self, *args, **kwargs):

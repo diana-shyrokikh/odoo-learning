@@ -83,6 +83,10 @@
                             type="object"
                             class="oe_highlight"
                     />
+                    <button name="action_done"
+                            string="Mark appointments as done"
+                            type="object"
+                    />
                     <button name="edit"
                             string="Edit"
                             type="edit"
