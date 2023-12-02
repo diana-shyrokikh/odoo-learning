@@ -24,6 +24,11 @@ class HospitalPatient(models.Model):
         ("male", "Male"),
         ("female", "Female")
     ]
+    MARITAL_STATUSES = [
+        ("married", "Married"),
+        ("single", "Single"),
+
+    ]
 
     name = fields.Char(
         string="Name", tracking=True
@@ -66,6 +71,13 @@ class HospitalPatient(models.Model):
         "patient_id",
         string="Appointments"
     )
+    parent = fields.Char(string="Parent")
+    marital_status = fields.Selection(
+        MARITAL_STATUSES,
+        string="Marital Status",
+        tracking=True
+    )
+    partner_name = fields.Char(string="Partner Name")
 
     @api.depends("appointment_ids")
     def _compute_appointment_count(self):

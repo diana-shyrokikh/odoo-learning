@@ -132,6 +132,15 @@
                             />
                         </group>
                     </group>
+                    <group string="Other Information"
+                           name="other_info"
+                    >
+                        <group>
+                            <field name="parent" attrs="{'invisible': [('age', '>', 18), ('gender', '=', 'male')]}"/>
+                            <field name="marital_status" attrs="{'invisible': [('age', '&lt;', 18)]}"/>
+                            <field name="partner_name" attrs="{'invisible': [('marital_status', '=', 'single')]}"/>
+                        </group>
+                    </group>
                 </sheet>
 
                 <div class="oe_chatter">
