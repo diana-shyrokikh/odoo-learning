@@ -47,7 +47,8 @@ class HospitalPatient(models.Model):
         tracking=True,
         compute="_compute_age",
         store=True,
-        inverse="_inverse_compute_age"
+        inverse="_inverse_compute_age",
+        search="_search_age",
     )
     gender = fields.Selection(
         GENDERS, string="Gender", tracking=True
@@ -121,7 +122,18 @@ class HospitalPatient(models.Model):
             patient.date_of_birth = today - relativedelta.relativedelta(
                 years=patient.age
             )
+            
+    def _search_age(self, operator, value):
+        date_of_birth = date.today() - relativedelta.relativedelta(
+                years=value
+        )
+        start_of_year = date_of_birth.replace(day=1, month=1)
+        end_of_year = date_of_birth.replace(day=31, month=12)
 
+        return [
+            ("date_of_birth", ">=", start_of_year),
+            ("date_of_birth", "<=", end_of_year),
+        ]
 
 
     @api.model
