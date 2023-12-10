@@ -162,7 +162,9 @@
                     </div>
                     <group>
                         <group>
-                            <field name="patient_id"/>
+                            <field name="patient_id"
+                                   widget="selection"
+                            />
                             <field name="ref"
                                    readonly="1"
                                    force_save="1"
