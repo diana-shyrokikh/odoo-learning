@@ -1,4 +1,5 @@
 from datetime import date
+from dateutil import relativedelta
 import logging
 
 from odoo import api, fields, models, _
@@ -45,7 +46,8 @@ class HospitalPatient(models.Model):
         string="Age",
         tracking=True,
         compute="_compute_age",
-        store=True
+        store=True,
+        inverse="_inverse_compute_age"
     )
     gender = fields.Selection(
         GENDERS, string="Gender", tracking=True
@@ -111,6 +113,16 @@ class HospitalPatient(models.Model):
                 patient.age = age
             else:
                 patient.age = 0
+
+    @api.depends("age")
+    def _inverse_compute_age(self):
+        today = date.today()
+        for patient in self:
+            patient.date_of_birth = today - relativedelta.relativedelta(
+                years=patient.age
+            )
+
+
 
     @api.model
     def create(self, vals):
