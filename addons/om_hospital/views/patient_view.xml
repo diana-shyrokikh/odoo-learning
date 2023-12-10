@@ -130,10 +130,11 @@
                             <field name="appointment_count" />
                         </group>
                         <group>
+<!--                             widget="many2many_tags"-->
                             <field name="active" invisible="1"/>
                             <field name="appointment_id"/>
                             <field name="tag_ids"
-                                   widget="many2many_tags"
+                                   widget="many2many_checkboxes"
                                    options="{
                                         'color_field': 'color'
                                    }"
