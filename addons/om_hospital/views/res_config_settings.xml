@@ -47,11 +47,6 @@
         <field name="context">{'module' : 'om_hospital'}</field>
     </record>
 
-<!--    <menuitem id="menu_hospital_configuration"-->
-<!--        name="Configuration"-->
-<!--        parent="menu_configuration"-->
-<!--        sequence="100"/>-->
-
     <menuitem id="menu_hospital_settings"
         name="Settings"
         parent="menu_configuration"
