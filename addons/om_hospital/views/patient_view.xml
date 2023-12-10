@@ -125,6 +125,7 @@
                             <field name="age"/>
                             <field name="gender"
                                    invisible="context.get('hide_gender')"
+                                   widget="radio"
                             />
                             <field name="appointment_count" />
                         </group>
