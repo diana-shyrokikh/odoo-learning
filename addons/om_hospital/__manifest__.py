@@ -23,6 +23,7 @@
         "views/appointment_view.xml",
         "views/patient_tag_view.xml",
         "views/odoo_playground_view.xml",
+        "views/res_config_settings.xml"
     ],
     "demo": [],
     "installable": True,

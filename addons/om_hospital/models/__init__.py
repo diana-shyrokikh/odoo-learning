@@ -3,4 +3,5 @@ from . import (
     appointment,
     patient_tag,
     odoo_playground,
+    res_config_settings,
 )
