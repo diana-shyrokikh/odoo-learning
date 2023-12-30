@@ -76,10 +76,14 @@
         <field name="arch" type="xml">
             <tree export_xlsx="0">
                 <field name="name" string="Patient Name"/>
-                <field name="age"/>
+                <field name="age"
+                       avg="Average Age"
+                />
                 <field name="gender"/>
                 <field name="ref"/>
-                <field name="appointment_count"/>
+                <field name="appointment_count"
+                       sum="Total Appointment"
+                />
                 <field name="tag_ids"
                        widget="many2many_tags"
                        options="{
