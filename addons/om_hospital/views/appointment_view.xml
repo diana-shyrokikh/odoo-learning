@@ -178,6 +178,7 @@
                             <field name="booking_date"
                                    default_focus="1"
                             />
+                            <field name="operation_id" />
                             <field name="appointment_time"/>
                             <field name="hide_sales_price"
                                    groups="base.group_no_one"

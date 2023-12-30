@@ -2,7 +2,6 @@ from odoo import api, fields, models, _
 from odoo.exceptions import ValidationError
 
 
-
 class HospitalAppointment(models.Model):
     _name = "hospital.appointment"
     _inherit = [
@@ -74,6 +73,11 @@ class HospitalAppointment(models.Model):
         string="Pharmacy Lines"
     )
     hide_sales_price = fields.Boolean(string="Hide Sales Price")
+    operation_id = fields.Many2one(
+        comodel_name="hospital.operation",
+        string="Operation",
+        tracking=True,
+    )
 
     def unlink(self):
         for appointment in self:

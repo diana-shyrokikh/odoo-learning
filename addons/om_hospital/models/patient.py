@@ -12,6 +12,7 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 
+
 class HospitalPatient(models.Model):
     _name = "hospital.patient"
     _inherit = [
