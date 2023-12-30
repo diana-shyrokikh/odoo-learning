@@ -10,7 +10,7 @@ class HospitalAppointment(models.Model):
     ]
     _description = "Hospital Appointment"
     _rec_name = "ref"
-    _order = "id desc, name"
+    _order = "id desc, appointment_time"
 
     PRIORITIES = [
         ("0", "Normal"),
