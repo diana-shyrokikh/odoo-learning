@@ -197,6 +197,7 @@
                             <field name="booking_date"
                                    default_focus="1"
                             />
+                            <field name="duration"/>
                             <field name="operation_id" />
                             <field name="appointment_time"/>
                             <field name="hide_sales_price"
@@ -308,16 +309,42 @@
         </field>
     </record>
 
+     <record id="view_hospital_appointment_calendar"
+            model="ir.ui.view"
+    >
+        <field name="name">hospital.appointment.calendar</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <calendar string="Appointments"
+                      date_start="booking_date"
+                      date_delay="duration"
+                      color="state"
+                      quick_add="False"
+                      hide_time="True"
+                      event_open_popup="True"
+                      event_limit="5"
+                      mode="month"
+            >
+                <field name="patient_id"
+                       filters="1"
+                       avatar_field="image"
+                />
+                <field name="state"
+                       invisible="1"
+                       filters="1"
+                />
+            </calendar>
+        </field>
+    </record>
+
     <record id="action_hospital_appointment"
             model="ir.actions.act_window"
     >
         <field name="name">Appointments</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">hospital.appointment</field>
-        <field name="view_mode">tree,form,activity</field>
-        <field name="context">
-            {}
-        </field>
+        <field name="view_mode">tree,form,calendar,activity</field>
+        <field name="context">{}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create your first appointment!

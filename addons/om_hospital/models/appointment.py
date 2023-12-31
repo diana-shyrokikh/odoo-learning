@@ -84,6 +84,7 @@ class HospitalAppointment(models.Model):
         string="Progress",
         compute="_compute_progress"
     )
+    duration = fields.Float(string="Duration")
 
     def unlink(self):
         for appointment in self:
