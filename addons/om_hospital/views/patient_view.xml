@@ -110,6 +110,21 @@
 <!--                    />-->
 <!--                </header>-->
                 <sheet>
+                    <div class="oe_button_box"
+                          name="button_box"
+                    >
+                        <button class="oe_stat_button"
+                                type="object"
+                                name="action_view_appointments"
+                                icon="fa-star"
+                        >
+                            <field string="Appointment"
+                                   name="appointment_count"
+                                   widget="statinfo"
+                            />
+                        </button>
+                    </div>
+
                     <div class="alert alert-info text-center o_form_header"
                          role="alert"
                          attrs="{
@@ -151,7 +166,6 @@
                                    invisible="context.get('hide_gender')"
                                    widget="radio"
                             />
-                            <field name="appointment_count" />
                         </group>
                         <group>
 <!--                             widget="many2many_tags"-->

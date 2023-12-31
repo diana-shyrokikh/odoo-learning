@@ -220,6 +220,17 @@ class HospitalPatient(models.Model):
 
             patient.is_birthday = is_birthday
 
+    def action_view_appointments(self):
+        return {
+            "name": _("Appointments"),
+            "res_model": "hospital.appointment",
+            "view_mode": "list,form,calendar,activity",
+            "context": {"default_patient_id": self.id},
+            "domain": [("patient_id", "=", self.id)],
+            "target": "current",
+            "type": "ir.actions.act_window",
+        }
+
     #
     # @api.model
     # def print_report(self, *args, **kwargs):
