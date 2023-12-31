@@ -1,3 +1,4 @@
+import random
 from odoo import api, fields, models, _
 from odoo.exceptions import ValidationError
 
@@ -79,6 +80,10 @@ class HospitalAppointment(models.Model):
         string="Operation",
         tracking=True,
     )
+    progress = fields.Integer(
+        string="Progress",
+        compute="_compute_progress"
+    )
 
     def unlink(self):
         for appointment in self:
@@ -122,6 +127,20 @@ class HospitalAppointment(models.Model):
         ).read()[0]
 
         return action
+
+    @api.depends("state")
+    def _compute_progress(self):
+        progress = 0
+
+        for appointment in self:
+            if appointment.state == "draft":
+                progress = random.randrange(0, 25)
+            elif appointment.state == "in_consultation":
+                progress = random.randrange(26, 99)
+            elif appointment.state == "done":
+                progress = 100
+
+            appointment.progress = progress
 
 
 class AppointmentPharmacyLines(models.Model):

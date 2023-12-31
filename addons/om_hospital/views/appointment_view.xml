@@ -78,6 +78,9 @@
                        decoration-danger="state == 'canceled'"
                        decoration-info="state == 'in_consultation'"
                 />
+                <field name="progress"
+                       widget="progressbar"
+                />
                 <button name="action_done"
                         type="object"
                         class="fa fa-check btn-success"
@@ -220,6 +223,16 @@
                     </group>
 
                     <notebook>
+                        <page string="Progress"
+                              name="progress"
+                        >
+<!--                            widget="gauge"-->
+                            <field name="progress"
+                                   widget="percentpie"
+                            />
+
+                        </page>
+
                         <page string="Prescription"
                               name="prescription"
                         >
