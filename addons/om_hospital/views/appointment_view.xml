@@ -211,10 +211,10 @@
                             />
 
                             <button name="action_test"
-                                    string="Test Object Button"
+                                    string="Redirect Button"
                                     type="object"
-                                    help="A messsage will be printed in the log"
-                                    confirm="Are you sure to execute python code?"
+                                    help="A message will be printed in the log"
+                                    confirm="Are you sure to need to redirect?"
                                     class="oe_highlight"
                                     groups="base.group_no_one"
                             />

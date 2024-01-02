@@ -113,11 +113,9 @@ class HospitalAppointment(models.Model):
 
     def action_test(self):
         return {
-            "effect": {
-                "fadeout": "slow",
-                "message": "Click Successful",
-                "type": "rainbow_man",
-            }
+            "type": "ir.actions.act_url",
+            "target": "self",
+            "url": "https://www.odoo.com",
         }
 
     def action_draft(self):
@@ -133,6 +131,14 @@ class HospitalAppointment(models.Model):
         for appointment in self:
             if appointment.state == "in_consultation":
                 appointment.state = "done"
+
+        return {
+            "effect": {
+                "fadeout": "slow",
+                "message": "Done",
+                "type": "rainbow_man",
+            }
+        }
 
     def action_canceled(self):
         action = self.env.ref(
