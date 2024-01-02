@@ -7,7 +7,8 @@ class PatientTag(models.Model):
 
     name = fields.Char(
         string="Name",
-        required=True
+        required=True,
+        trim=False,
     )
     active = fields.Boolean(
         string="Active",
