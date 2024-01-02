@@ -200,6 +200,12 @@
                             <field name="duration"/>
                             <field name="operation_id" />
                             <field name="appointment_time"/>
+                            <field name="company_id"
+                                   groups="base.group_multi_company"
+                            />
+                            <field name="currency_id"
+                                   groups="base.group_multi_currency"
+                            />
                             <field name="hide_sales_price"
                                    groups="base.group_no_one"
                             />
@@ -254,7 +260,16 @@
                                 <tree editable="bottom">
                                     <field name="product_id"/>
                                     <field name="qty"/>
-                                    <field name="price"/>
+                                    <field name="price"
+                                           widget="monetary"
+                                           options="{
+                                            'currency_field': 'currency_id'
+                                           }"
+                                    />
+                                    <field name="currency_id"
+                                           invsible="1"
+                                    />
+                                    <field name="price_subtotal"/>
                                 </tree>
                                 <form>
                                     <group>

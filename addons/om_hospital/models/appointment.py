@@ -85,6 +85,15 @@ class HospitalAppointment(models.Model):
         compute="_compute_progress"
     )
     duration = fields.Float(string="Duration")
+    company_id = fields.Many2one(
+        "res.company",
+        string="Company",
+        default=lambda self: self.env.company
+    )
+    currency_id = fields.Many2one(
+        "res.currency",
+        related="company_id.currency_id"
+    )
 
     def unlink(self):
         for appointment in self:
@@ -163,3 +172,17 @@ class AppointmentPharmacyLines(models.Model):
         "hospital.appointment",
         string="Appointment",
     )
+    currency_id = fields.Many2one(
+        "res.currency",
+        related="appointment_id.currency_id"
+    )
+    price_subtotal = fields.Monetary(
+        string="Subtotal",
+        compute="_compute_price_subtotal",
+        currency_field="currency_id",
+    )
+
+    @api.depends("price", "qty")
+    def _compute_price_subtotal(self):
+        for rec in self:
+            rec.price_subtotal = rec.price * rec.qty
