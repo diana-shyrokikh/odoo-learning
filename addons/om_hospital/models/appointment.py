@@ -29,15 +29,18 @@ class HospitalAppointment(models.Model):
     patient_id = fields.Many2one(
         comodel_name="hospital.patient",
         string="Patient",
-        ondelete="restrict"  # if any refers it's prohibited
+        ondelete="restrict",  # if any refers it's prohibited
+        tracking=1,
     )
     appointment_time = fields.Datetime(
         string="Appointment time",
-        default=fields.Datetime.now
+        default=fields.Datetime.now,
+        tracking=2,
     )
     booking_date = fields.Date(
         string="Booking Date",
-        default=fields.Date.context_today
+        default=fields.Date.context_today,
+        tracking=True,
     )
     gender = fields.Selection(
         related="patient_id.gender"
