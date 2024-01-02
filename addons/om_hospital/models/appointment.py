@@ -161,6 +161,23 @@ class HospitalAppointment(models.Model):
 
             appointment.progress = progress
 
+    def action_share_whatsapp(self):
+        if not self.patient_id.phone:
+            raise ValidationError(
+                _("Missing phone number in patient record!")
+            )
+
+        message = f"Hello {self.patient_id.name}"
+        whatsapp_api_url = (
+            f"https://api.whatsapp.com/send?phone={self.patient_id.phone}&text=*{message}*"
+        )
+
+        return {
+            "type": "ir.actions.act_url",
+            "target": "new",
+            "url": whatsapp_api_url,
+        }
+
 
 class AppointmentPharmacyLines(models.Model):
     _name = "appointment.pharmacy.lines"

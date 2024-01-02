@@ -148,6 +148,13 @@
                             class="oe_highlight"
                             data-hotkey="k"
                     />
+                    <button
+                            name="action_share_whatsapp"
+                            string="Share in Whatsapp"
+                            type="object"
+                            class="oe_highlight"
+                            icon="fa-whatsapp"
+                    />
                     <button name="%(om_hospital.action_cancel_appointment)d"
                             string="Cancel"
                             type="action"
