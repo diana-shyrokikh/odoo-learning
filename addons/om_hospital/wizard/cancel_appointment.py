@@ -46,9 +46,18 @@ class CancelAppointmentWizard(models.TransientModel):
         for wizard in self:
             if wizard.appointment_id:
                 wizard.appointment_id.state = "canceled"
-
                 return {
-                    "type": "ir.actions.client",
-                    "tag": "reload",
+                    "type": "ir.actions.act_window",
+                    "view_mode": "form",
+                    "res_model": "cancel.appointment.wizard",
+                    "target": "new",
+                    "res_id": self.id,
                 }
+
+                # reload the screen
+
+                # return {
+                #     "type": "ir.actions.client",
+                #     "tag": "reload",
+                # }
 
