@@ -54,6 +54,10 @@
 
                 <field name="patient_id"
                        string="Patient"
+                       decoration-bf="1"
+                       decoration-it="1"
+                       decoration-danger="gender=='female'"
+                       decoration-info="gender=='male'"
                 />
                 <field name="ref"
                        optional="hide"
