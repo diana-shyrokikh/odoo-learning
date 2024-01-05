@@ -229,6 +229,12 @@
                                     class="oe_highlight"
                                     groups="base.group_no_one"
                             />
+                            <button name="action_notification"
+                                    string="Notification Button"
+                                    type="object"
+                                    class="oe_highlight"
+                                    groups="base.group_no_one"
+                            />
                             <button name="%(om_hospital.action_hospital_patient)d"
                                     string="Test Action Button"
                                     type="action"

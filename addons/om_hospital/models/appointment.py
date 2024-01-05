@@ -178,6 +178,26 @@ class HospitalAppointment(models.Model):
             "url": whatsapp_api_url,
         }
 
+    def action_notification(self):
+        action = self.env.ref(
+            "om_hospital.action_hospital_patient"
+        )
+
+        return {
+            "type": "ir.actions.client",
+            "tag": "display_notification",
+            "params": {
+                "title": _("Click to open the patient record"),
+                "message": "%s",
+                "type": "success",
+                "sticky": True,
+                "links": [{
+                    "label": self.patient_id.name,
+                    "url": f"#action={action.id}&id={self.patient_id.id}&model=hospital.patient"
+                }]
+            }
+        }
+
 
 class AppointmentPharmacyLines(models.Model):
     _name = "appointment.pharmacy.lines"
