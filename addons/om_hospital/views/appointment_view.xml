@@ -274,7 +274,8 @@
                                     <field name="price"
                                            widget="monetary"
                                            options="{
-                                            'currency_field': 'currency_id'
+                                            'currency_field': 'currency_id',
+                                            'field_digits': True,
                                            }"
                                     />
                                     <field name="currency_id"

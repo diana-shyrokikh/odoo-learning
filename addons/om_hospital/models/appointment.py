@@ -192,7 +192,8 @@ class AppointmentPharmacyLines(models.Model):
         default=1
     )
     price = fields.Float(
-        related="product_id.list_price"
+        related="product_id.list_price",
+        digits="Product Price",
     )
     appointment_id = fields.Many2one(
         "hospital.appointment",
