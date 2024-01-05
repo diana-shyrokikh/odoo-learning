@@ -31,6 +31,18 @@ class CancelAppointmentWizard(models.TransientModel):
     date_cancel = fields.Date("Cancellation Date")
 
     def action_cancel(self):
+        query = """
+                    SELECT id, name 
+                    FROM hospital_patient
+                """
+
+        self.env.cr.execute(query)
+
+        patients = self.env.cr.fetchall()
+
+        print(patients)
+
+
         cancel_day = self.env["ir.config_parameter"].get_param(
             "om_hospital.cancel_day"
         )
