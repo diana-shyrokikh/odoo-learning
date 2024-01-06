@@ -78,6 +78,20 @@ if uid:
 
     print("partner_rec_2", partner_rec_2)
 
+    # CREATE
+    new_partner_id = models.execute_kw(
+        db,
+        uid,
+        password,
+        "res.partner",
+        "create",
+        [{
+            "name": "New Partner",
+            "email": "email@gmail.com"
+        }]
+    )
+
+    print("created record", new_partner_id)
 
 else:
     print("authentication failed")
