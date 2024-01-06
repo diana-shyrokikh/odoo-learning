@@ -61,5 +61,23 @@ if uid:
 
     print(partner_rec)
 
+    # SEARCH READ
+    partner_rec_2 = models.execute_kw(
+        db,
+        uid,
+        password,
+        "res.partner",
+        "search_read",
+        [[["is_company", "=", True]]],
+        {
+            "fields": ["id", "name",],
+            "limit": 8
+        }
+
+    )
+
+    print("partner_rec_2", partner_rec_2)
+
+
 else:
     print("authentication failed")
