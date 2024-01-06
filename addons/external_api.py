@@ -93,5 +93,30 @@ if uid:
 
     print("created record", new_partner_id)
 
+    # WRITE / UPDATE
+    models.execute_kw(
+        db,
+        uid,
+        password,
+        "res.partner",
+        "write",
+        [[new_partner_id],
+         {
+             "phone": "22222222222222222222",
+             "name": "33333333333333"
+         }]
+    )
+
+    updated_partner = models.execute_kw(
+        db,
+        uid,
+        password,
+        "res.partner",
+        "read",
+        [[new_partner_id], ["phone", "name"]]
+    )
+
+    print("updated_partner", updated_partner)
+
 else:
     print("authentication failed")
