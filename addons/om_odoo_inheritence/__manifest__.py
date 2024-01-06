@@ -23,6 +23,7 @@
     'depends': [
         'base',
         "sale",
+        "mail",
     ],
 
     # always loaded
@@ -31,6 +32,7 @@
         "views/sale_order_view.xml",
         "views/account_move_view.xml",
         'views/templates.xml',
+        'views/res_partner_category_view.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
