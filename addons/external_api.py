@@ -1,3 +1,7 @@
+"""
+ODOO EXTERNAL API documentation
+https://www.odoo.com/documentation/17.0/developer/reference/external_api.html
+"""
 import xmlrpc.client
 
 url = "http://localhost:8071"
@@ -117,6 +121,16 @@ if uid:
     )
 
     print("updated_partner", updated_partner)
+
+    # DELETE / UNLINK
+    models.execute_kw(
+        db,
+        uid,
+        password,
+        "res.partner",
+        "unlink",
+        [[new_partner_id]]
+    )
 
 else:
     print("authentication failed")
